@@ -40,7 +40,7 @@ function Stage2:update(dt)
             self.collectible.collider:destroy()
             self.collectible = nil
             audioUnlocked = true
-            love.audio.play(currentSong)
+            -- love.audio.play(currentSong)
             gStateMachine:change('stage3')
         end
     end
