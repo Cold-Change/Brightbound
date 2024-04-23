@@ -63,13 +63,13 @@ function love.load()
     }
 
     sounds = {
-        -- music = {
-        --     love.audio.newSource('src/sounds/Ambient 1.wav', 'stream'),
-        --     love.audio.newSource('src/sounds/Ambient 2.wav', 'stream'),
-        --     love.audio.newSource('src/sounds/Ambient 3.wav', 'stream'),
-        --     love.audio.newSource('src/sounds/Ambient 4.wav', 'stream'),
-        --     love.audio.newSource('src/sounds/Ambient 5.wav', 'stream'),
-        -- },
+        music = {
+            love.audio.newSource('src/sounds/Ambient 1.wav', 'stream'),
+            love.audio.newSource('src/sounds/Ambient 2.wav', 'stream'),
+            love.audio.newSource('src/sounds/Ambient 3.wav', 'stream'),
+            love.audio.newSource('src/sounds/Ambient 4.wav', 'stream'),
+            love.audio.newSource('src/sounds/Ambient 5.wav', 'stream'),
+        },
         blip = {
             love.audio.newSource('src/sounds/Blip1.wav', 'static'),
             love.audio.newSource('src/sounds/Blip2.wav', 'static'),
@@ -94,9 +94,9 @@ function love.load()
 
     
 
-    -- for i,v in ipairs(sounds.music) do
-    --     v:setLooping(true)
-    -- end
+    for i,v in ipairs(sounds.music) do
+        v:setLooping(true)
+    end
 
     cursorUnlocked = false
     audioUnlocked = false
@@ -110,8 +110,8 @@ function love.load()
     currentColor = {1,1,1,1}
     currentBrightness = brightness[1]
     currentVolume = volume[3]
-    -- currentSong = sounds.music[1]
-    -- currentSongNumber = 1
+    currentSong = sounds.music[1]
+    currentSongNumber = 1
 
     objects = {
         cursor = love.graphics.newImage('src/graphics/Cursor.png'),
@@ -234,18 +234,18 @@ function love.mousepressed(x, y, button)
             end
         end
     elseif button == 2 then
-        -- if audioUnlocked then
-        --     if x >= 600 and x <= 600+objects.soundIcon:getWidth() and y >= WINDOW_HEIGHT-35 and y <= WINDOW_HEIGHT-35+objects.soundIcon:getHeight() then
-        --         love.audio.stop()
-        --         if currentSongNumber < 5 then
-        --             currentSongNumber = currentSongNumber + 1
-        --         else
-        --             currentSongNumber = 1
-        --         end
-        --         currentSong = sounds.music[currentSongNumber]
-        --         love.audio.play(currentSong)
-        --     end
-        -- end
+        if audioUnlocked then
+            if x >= 600 and x <= 600+objects.soundIcon:getWidth() and y >= WINDOW_HEIGHT-35 and y <= WINDOW_HEIGHT-35+objects.soundIcon:getHeight() then
+                love.audio.stop()
+                if currentSongNumber < 5 then
+                    currentSongNumber = currentSongNumber + 1
+                else
+                    currentSongNumber = 1
+                end
+                currentSong = sounds.music[currentSongNumber]
+                love.audio.play(currentSong)
+            end
+        end
     end
 end
 
